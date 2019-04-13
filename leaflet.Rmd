@@ -1,0 +1,70 @@
+---
+title: "Leaflet"
+author: "David"
+date: "13 4 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## First Leaflet
+```{r}
+ library(leaflet)
+my_map <- leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(lat=47.509542,lng = 8.729479, popup="David?")
+my_map
+```
+
+
+## Many Markers Leaflet
+```{r}
+set.seed(2016-04-25)
+df <- data.frame(lat=runif(20, min=47.45, max=47.55), lng=runif(20,min=8.62, max=8.82))
+df %>%  leaflet() %>% 
+    addTiles() %>% 
+    addMarkers()
+```
+
+## David with Icon Leaflet
+```{r}
+icon <- makeIcon(
+    iconUrl = "http://brand.jhu.edu/content/uploads/2014/06/university.shield.small_.blue_.png",
+    iconWidth = 31*215/230, iconHeight = 31,
+    iconAnchorX = 31*215/230/2, iconAnchorY = 16
+)
+my_map <- leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(lat=47.509542,lng = 8.729479, popup="<a href='http://www.winterthur.ch'>David</a>", icon= icon)
+my_map
+```
+
+## Many Markers, ClusterLeaflet
+```{r}
+set.seed(2016-04-25)
+df <- data.frame(lat=runif(500, min=47.45, max=47.55), lng=runif(500,min=8.62, max=8.82))
+df %>%  leaflet() %>% 
+    addTiles() %>% 
+    addMarkers(clusterOptions = markerClusterOptions())
+```
+
+## Many Markers, Circlemarkers Leaflet
+```{r}
+set.seed(2016-04-25)
+df <- data.frame(lat=runif(500, min=47.45, max=47.55), lng=runif(500,min=8.62, max=8.82))
+df %>%  leaflet() %>% 
+    addTiles() %>% 
+    addCircleMarkers()
+```
+
+
+## Many Markers, circles different sizes Leaflet
+```{r}
+set.seed(2016-04-25)
+df <- data.frame(lat=runif(20, min=47.45, max=47.55), lng=runif(20,min=8.62, max=8.82), rad=runif(20, min=500, max=2500))
+df %>%  leaflet() %>% 
+    addTiles() %>% 
+    addCircles(weight = 1, radius = df$rad)
+```

@@ -1,0 +1,34 @@
+---
+title: "Leaflet Assignment"
+author: "David"
+date: "13 4 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## The 9 biggest cities of Switzerland
+The size of the circles simulates the population, the color the main language
+```{r, comment=FALSE}
+library(leaflet)
+df <- data.frame(
+    lat=c(47.4992,47.37174,46.94798, 47.55814,47.42356,46.200013,46.51942,46.00799,47.05207), 
+    lng=c(8.72671, 8.54226, 7.44743,7.58769,9.37749, 6.149985,6.63448,8.95566,8.30585), 
+    population=c(110000,410000, 142500, 171500,75500,200500,139000,63500,81200),
+    popup=c("<a href='https://winterthur.ch/'>Winterthur</a>", 
+            "<a href='https://www.stadt-zuerich.ch/portal/de/index.html'>Zürich</a>", 
+            "<a href='https://www.bern.ch/'>Bern</a>", 
+            "<a href='https://www.bs.ch/'>Basel</a>", 
+            "<a href='https://www.stadt.sg.ch/'>St. Gallen</a>",
+            "<a href='http://www.ville-geneve.ch/'>Geneve</a>", 
+            "<a href='https://www.lausanne.ch/'>Lausanne</a>", 
+            "<a href='https://www.lugano.ch/'>Lugano</a>",
+            "<a href='https://www.stadtluzern.ch/'>Luzern</a>"),
+    lang=c("red", "red", "red", "red", "red", "green", "green", "blue", "red"))
+df %>%  leaflet() %>% 
+    addTiles() %>% 
+    addCircles(lat = df$lat, lng = df$lng, weight = 1, radius = df$population/20, color = df$lang,popup = df$popup) %>%
+    addLegend(labels = c("german", "french", "italien"), colors=c("red", "green", "blue"))
+```
