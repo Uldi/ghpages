@@ -1,0 +1,30 @@
+---
+title: "Plotly Presentation"
+author: "David"
+date: "14 4 2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Developing Data Products - Week 3 Assignment
+
+This slide set follows the instructions of the coursera course "Developing Data Products" week 3 assingment:
+
+*Create a web page presentation using R Markdown that features a plot created with Plotly. Host your webpage on either GitHub Pages, RPubs, or NeoCities. Your webpage must contain the date that you created the document, and it must contain a plot created with Plotly. We would love to see you show off your creativity!*
+
+
+## Boxplot comparing manual and automatic transmission
+
+```{r pressure, message=FALSE}
+library(plotly)
+data("mtcars")
+g <- ggplot(mtcars,aes(factor(am),mpg)) + geom_boxplot() +xlab("Transimission: 0 = automatic, 1 = manual")
+ggplotly(g)
+
+```
+
+
+## That's it...
