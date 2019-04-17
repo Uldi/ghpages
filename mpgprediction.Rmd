@@ -18,7 +18,7 @@ Previous data analysis showed that these predictors have a major influence on th
 
 ## Data Set
 
-For the prediction I useed the mtcars dataset. A data frame with 32 observations on 11 (numeric) variables. 
+For the prediction I used the *mtcars* dataset. A data frame with 32 observations on 11 (numeric) variables. 
 <font size=4>
 
 * [, 1]	mpg	Miles/(US) gallon 

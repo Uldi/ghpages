@@ -15,7 +15,7 @@ shinyUI(fluidPage(
     sidebarLayout(
         sidebarPanel(
             sliderInput("sliderCYL", "What is the number of cylinders of the car?", 4, 8, value=6, step=2),
-            sliderInput("sliderWT", "What is the weight of the car in lbs?", 1500, 5500, value=3000),
+            sliderInput("sliderWT", "What is the weight of the car in lbs?", 1500, 5500, value=3000, step=100),
             checkboxInput("manualTransmission", "Manual Transmission? (vs. automatic)", value=TRUE),
             submitButton("Submit")
         ),
